@@ -1,0 +1,129 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.page-wrapper {
+  min-width: 1200px;
+}
+
+.navbar-brand .logo {
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.btn-find {
+  background-color: #193764;
+  border-color: #193764;
+  color: #fff;
+}
+.btn-find:hover {
+  background-color: #193764;
+  border-color: #193764;
+  color: #fff;
+}
+
+.search-input {
+  max-width: 300px;
+  flex: 1 1 auto;
+}
+
+.sidebar-panel {
+  min-height: 900px;
+  background-color: white;
+}
+
+.sidebar-width {
+  max-width: 12%;
+  flex: 0 0 12%;
+}
+
+.main-wide {
+  max-width: 90%;
+  flex: 0 0 90%;
+}
+
+.custom-carousel {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  left: 3%;
+  border-radius: 20px;
+}
+
+.custom-carousel .carousel-item img {
+  height: 400px;
+  width: 80%;
+  object-fit: cover;
+  object-position: top bottom;
+  border-radius: 20px;
+}
+
+.hero-caption {
+  position: absolute;
+  inset: 0;
+  left: 10%;
+  right: auto;
+  text-align: left;
+  pointer-events: none;
+  margin: 0 0 20px;
+}
+
+.hero-caption h1 {
+  font-size: 70px;
+  font-family: "Montserrat", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  text-shadow: 0 12px 12px rgba(0, 0, 0, 0.6);
+}
+
+.hero-caption p {
+  font-size: 40px;
+  font-family: "Montserrat", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+  text-shadow: 0 12px 12px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.top-city {
+  max-width: 1100px;
+  margin: 40px auto 0 250px;
+}
+
+.top-city .card {
+  width: 350px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.top-city img.card-img-top {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.top-city-section .cards-row {
+  justify-content: center;
+}
