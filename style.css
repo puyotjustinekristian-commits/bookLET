@@ -27,6 +27,24 @@ body {
   color: #fff;
 }
 
+.help:hover {
+  background-color: rgb(212, 212, 212);
+  border-color: rgb(212, 212, 212);
+  border-radius: 30%;
+}
+
+.sign-in:hover {
+  background-color: rgb(212, 212, 212);
+  border-color: rgb(212, 212, 212);
+  border-radius: 30%;
+}
+
+.log-in {
+  background-color: #193764;
+  border-color: #193764;
+  border-radius: 30%;
+}
+
 .search-input {
   max-width: 300px;
   flex: 1 1 auto;
