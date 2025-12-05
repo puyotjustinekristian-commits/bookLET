@@ -2,15 +2,14 @@ html,
 body {
   height: 100%;
   margin: 0;
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .page-wrapper {
   min-width: 1200px;
 }
 
-.navbar-brand .logo {
+.logo .logo {
   height: 40px;
   width: 100%;
   border-radius: 8px;
@@ -19,12 +18,12 @@ body {
 .btn-find {
   background-color: #193764;
   border-color: #193764;
-  color: #fff;
+  color: white;
 }
 .btn-find:hover {
   background-color: #193764;
   border-color: #193764;
-  color: #fff;
+  color: white;
 }
 
 .help:hover {
@@ -51,13 +50,23 @@ body {
 }
 
 .sidebar-panel {
-  min-height: 900px;
+  min-height: 100vh;
   background-color: white;
 }
 
 .sidebar-width {
   max-width: 12%;
   flex: 0 0 12%;
+}
+
+.sidebar-panel a {
+  color: black;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+}
+
+.sidebar-panel a:hover {
+  color: black;
 }
 
 .main-wide {
@@ -77,7 +86,7 @@ body {
   height: 400px;
   width: 80%;
   object-fit: cover;
-  object-position: top bottom;
+  object-position: center top;
   border-radius: 20px;
 }
 
@@ -126,22 +135,68 @@ body {
 
 .top-city {
   max-width: 1100px;
-  margin: 40px auto 0 250px;
+  margin: 40px auto;
+  padding-left: 51px;
+}
+
+.top-city .row > .col {
+  display: flex;
 }
 
 .top-city .card {
-  width: 350px;
-  height: 500px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .top-city img.card-img-top {
-  height: 250px;
   width: 100%;
+  height: 213px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.top-city .card-body {
+  flex: 1;
+}
+
+.top-city-section .cards-row {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.top-city .card {
+  max-width: 334px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-city .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.top-city img.card-img-top {
+  width: 100%;
+  height: 213px;
   object-fit: cover;
   object-position: center;
 }
 
 .top-city-section .cards-row {
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.top-city .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-city .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+  text-align: center;
+  padding: 12px 0;
 }
