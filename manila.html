@@ -15,7 +15,7 @@
   <body style="background-color: #f7f7f7">
     <div class="page-wrapper">
       <nav
-        class="navbar navbar-expand navbar-light bg-white border bottom"
+        class="navbar navbar-expand navbar-light bg-white border bottom navbar-width"
         style="background-color: white"
       >
         <div class="container-fluid align-items-center d-flex">
@@ -24,6 +24,7 @@
           </a>
           <form class="d-flex flex-grow-1" role="search">
             <input
+              id="search-bar"
               class="form-control me-2 search-input"
               type="search"
               placeholder="Destination, flight, hotel, etc."
@@ -35,13 +36,29 @@
           </form>
           <ul class="navbar-nav ms-3">
             <li class="nav-item help me-2">
-              <a class="nav-link" href="help.html" style="color: black">Help</a>
+              <a class="nav-link" href="help.html" style="color: #193764"
+                >Help</a
+              >
             </li>
             <li class="nav-item sign-in me-2">
-              <a class="nav-link" href="#" style="color: black">Sign in</a>
+              <a
+                class="nav-link"
+                type="button"
+                style="color: #193764"
+                data-bs-toggle="modal"
+                data-bs-target="#signin-modal"
+                >Sign in</a
+              >
             </li>
             <li class="nav-item log-in me-2">
-              <a class="nav-link" href="#" style="color: white">Log in</a>
+              <a
+                class="nav-link"
+                type="button"
+                style="color: white"
+                data-bs-toggle="modal"
+                data-bs-target="#login-modal"
+                >Log in</a
+              >
             </li>
           </ul>
         </div>
@@ -52,24 +69,98 @@
           <nav
             class="col-2 bg-white border-end py-4 sidebar-panel sidebar-width"
           >
-            <ul class="list-unstyled mb-0 ps-3">
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none">Hotels & Homes</a>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="hotel.html">Hotels</a>
               </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none">Flights</a>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="flights.html"
+                  >Flights</a
+                >
               </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none">Cars</a>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="cars.html"
+                  >Cars</a
+                >
               </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none">Attractions & Tours</a>
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-decoration-none">Flight + Hotel</a>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="adventure.html"
+                  >Adventures</a
+                >
               </li>
             </ul>
           </nav>
+
+          <main class="col-10 px-4 main-width">
+            <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="homepage.html" class="text-decoration-none">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <a href="Adventures.html" class="text-decoration-none"
+                    >Adventures</a
+                  >
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <a href="manila.html" class="text-decoration-none">Manila</a>
+                </li>
+              </ol>
+            </nav>
+            <div class="container">
+              <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="manila.jpg" class="img-fluid rounded-start" />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5
+                        class="card-title"
+                        style="
+                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                            'Trebuchet MS', sans-serif;
+                          font-size: 30px;
+                        "
+                      >
+                        <b>Manila</b>
+                      </h5>
+                      <p
+                        class="card-text-manila"
+                        style="
+                          font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                            'Trebuchet MS', sans-serif;
+                          font-size: 15px;
+                        "
+                      >
+                        Capital and chief city of the Philippines. The city is
+                        the centre of the country’s economic, political, social,
+                        and cultural activity. It is located on the island of
+                        Luzon and spreads along the eastern shore of Manila Bay
+                        at the mouth of the Pasig River. The city’s name,
+                        originally Maynilad, is derived from that of the nilad
+                        plant, a flowering shrub adapted to marshy conditions,
+                        which once grew profusely along the banks of the river;
+                        the name was shortened first to Maynila and then to its
+                        present form. In 1975, by presidential decree, Manila
+                        and its contiguous cities and municipalities were
+                        integrated to function as a single administrative
+                        region, known as Metropolitan Manila (also called the
+                        National Capital Region); the Manila city proper
+                        encompasses only a small proportion of that area.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
         </div>
       </div>
     </div>

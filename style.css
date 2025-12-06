@@ -2,7 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .page-wrapper {
@@ -62,16 +62,38 @@ body {
 .sidebar-panel a {
   color: black;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .sidebar-panel a:hover {
   color: black;
 }
 
-.main-wide {
-  max-width: 90%;
-  flex: 0 0 90%;
+.sidebar-panel {
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding-top: 1.5rem;
+}
+
+.sidebar-panel .nav {
+  gap: 0.5rem;
+}
+
+.sidebar-panel .nav-link {
+  padding: 0.5rem 1.25rem;
+  color: #193764;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+}
+
+.sidebar-panel .nav-link:hover {
+  background-color: #f0f4ff;
+}
+
+.sidebar-panel .nav-link.active {
+  color: #193764;
+  font-weight: 600;
 }
 
 .custom-carousel {
@@ -188,6 +210,7 @@ body {
 }
 
 .top-city .card {
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -200,3 +223,171 @@ footer {
   text-align: center;
   padding: 12px 0;
 }
+
+/*Login Modal Design*/
+#login-modal .modal-content {
+  background-color: transparent;
+  border: none;
+  width: 75%;
+  margin: 0 auto;
+}
+
+#login-modal .modal-body {
+  padding: 0;
+}
+
+#login-modal .btn-close {
+  position: absolute;
+  right: 0;
+  padding: 1em;
+}
+
+#login-modal h1 {
+  font-size: 2.3em;
+  font-weight: bold;
+}
+
+#login-modal .myform {
+  padding: 2em;
+  max-width: 100%;
+  color: #fff;
+  box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+  background-color: #193764;
+  border-radius: 12px;
+}
+
+@media (max-width: 576px) {
+  #login-modal .myform {
+    max-width: 100%;
+    margin: 0.5rem;
+  }
+}
+
+#login-modal .form-control {
+  background-color: inherit;
+  color: #fff;
+  padding-left: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+}
+
+#login-modal .form-control:focus {
+  background-color: inherit;
+  color: #fff;
+  box-shadow: inset 0 -1px 0 #7e7e7e;
+}
+
+#login-modal .myform .btn {
+  width: 100%;
+  font-weight: 800;
+  background-color: #fff;
+  border-radius: 0;
+  padding: 0.5em 0;
+}
+
+#login-modal .myform .btn:hover {
+  background-color: inherit;
+  color: #fff;
+  border-color: #fff;
+}
+
+#login-modal p {
+  text-align: center;
+  padding-top: 2em;
+  color: grey;
+}
+
+#login-modal p a {
+  color: #e1e1e1;
+  text-decoration: none;
+}
+
+#login-modal p a:hover {
+  color: #fff;
+}
+
+/*Signin Modal Design*/
+#signin-modal .modal-content {
+  background-color: transparent;
+  border: none;
+  width: 75%;
+  margin: 0 auto;
+}
+
+#signin-modal .modal-body {
+  padding: 0;
+}
+
+#signin-modal .btn-close {
+  position: absolute;
+  right: 0;
+  padding: 1em;
+}
+
+#signin-modal h1 {
+  font-size: 2.3em;
+  font-weight: bold;
+}
+
+#signin-modal .myform {
+  padding: 2em;
+  max-width: 100%;
+  color: #fff;
+  box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+  background-color: #193764;
+  border-radius: 12px;
+}
+
+@media (max-width: 576px) {
+  #signin-modal .myform {
+    max-width: 100%;
+    margin: 0.5rem;
+  }
+}
+
+#signin-modal .form-control {
+  background-color: inherit;
+  color: #fff;
+  padding-left: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+}
+
+#signin-modal .form-control:focus {
+  background-color: inherit;
+  color: #fff;
+  box-shadow: inset 0 -1px 0 #7e7e7e;
+}
+
+#signin-modal .myform .btn {
+  width: 100%;
+  font-weight: 800;
+  background-color: #fff;
+  border-radius: 0;
+  padding: 0.5em 0;
+}
+
+#signin-modal .myform .btn:hover {
+  background-color: inherit;
+  color: #fff;
+  border-color: #fff;
+}
+
+#signin-modal p {
+  text-align: center;
+  padding-top: 2em;
+  color: grey;
+}
+
+#signin-modal p a {
+  color: #e1e1e1;
+  text-decoration: none;
+}
+
+#signin-modal p a:hover {
+  color: #fff;
+}
+
+/*Manila html Design*/
