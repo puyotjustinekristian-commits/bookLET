@@ -35,8 +35,8 @@
                 type="button"
                 style="color: white"
                 data-bs-toggle="modal"
-                data-bs-target="#logoutModal"
-                >Logout</a
+                data-bs-target="#login-modal"
+                >Log in</a
               >
             </li>
           </ul>
@@ -219,6 +219,121 @@
       </div>
     </div>
 
+    <div
+      class="modal fade"
+      id="signin-modal"
+      tabindex="-1"
+      aria-labelledby="ModalFormLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <div class="myform">
+              <h1 class="text-center">Sign In</h1>
+              <form>
+                <div class="mb-3 mt-4">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="signinEmail"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="signinPassword1"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="confirmPassword"
+                  />
+                </div>
+                <button type="submit" class="btn btn-light mt-3">SUBMIT</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="login-modal"
+      tabindex="-1"
+      aria-labelledby="ModalFormLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <div class="myform">
+              <h1 class="text-center">Login Account</h1>
+              <form>
+                <div class="mb-3 mt-4">
+                  <label for="exampleInputEmail1" class="form-label"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="LoginEmail"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="LoginPassword"
+                  />
+                </div>
+                <button type="submit" class="btn btn-light mt-3">LOGIN</button>
+                <p>
+                  Not a member?
+                  <a
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#signin-modal"
+                    >Signup now</a
+                  >
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="node.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
