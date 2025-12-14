@@ -12,6 +12,8 @@ if ($conn === false) {
     die(print_r(sqlsrv_errors(), true));
 }
 
+$firstname = $_POST["firstname"];
+$surname = $_POST["surname"];
 $email = $_POST["signinEmail"];
 $password = $_POST["signinPassword"];
 $confirm = $_POST["confirmPassword"];
@@ -25,7 +27,7 @@ if ($password !== $confirm) {
     if ($checkRes && sqlsrv_fetch_array($checkRes)) {
         $error = "Email is already registered!";
     } else {
-        $sql = "INSERT INTO USERS (EMAIL, PASSWORD) VALUES ('$email', '$password')";
+        $sql = "INSERT INTO USERS (FIRST_NAME, SURNAME, EMAIL, PASSWORD) VALUES ('$firstname', '$surname', '$email', '$password')";
         $result = sqlsrv_query($conn, $sql);
         if ($result) {
             header('Location: homepage.html');
