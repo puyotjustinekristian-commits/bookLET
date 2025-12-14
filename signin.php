@@ -19,7 +19,7 @@ $confirm = $_POST["confirmPassword"];
 if ($password !== $confirm) {
     $error = "Passwords do not match!";
 } else {
-    $checkSql = "SELECT 1 FROM USERS WHERE EMAIL = '$email'";
+    $checkSql = "SELECT EMAIL FROM USERS WHERE EMAIL = '$email'";
     $checkRes = sqlsrv_query($conn, $checkSql);
 
     if ($checkRes && sqlsrv_fetch_array($checkRes)) {

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hotels</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* HERO BANNER */
+      .banner-wrapper {
+        position: relative;
+      }
+
+      .hero-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 10;
+      }
+
+      .hotel-banner {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 30px;
+        filter: brightness(50%);
+      }
+
+      .hero-caption h1 {
+        font-size: 60px;
+        font-weight: bold;
+      }
+
+      .hero-caption p {
+        font-size: 28px;
+      }
+
+      /* BOOKING OPTIONS HEADER */
+      .booking-options {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        font-size: 30px;
+        color: #193764;
+        text-align: center;
+      }
+
+      /* BOOKING OPTION BOXES */
+      .booking-box {
+        border: 2px solid #193764;
+        border-radius: 40px;
+        background-color: #fff;
+        min-width: 250px;
+        cursor: pointer;
+        padding: 15px 25px;
+        transition: 0.2s ease;
+      }
+
+      .booking-box:hover {
+        background-color: #f4f7f3;
+        border-color: #193764;
+      }
+
+      .booking-box span {
+        color: #193764;
+      }
+
+      .booking-box small {
+        font-size: 13px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 992px) {
+        .hotel-banner {
+          height: 260px;
+        }
+        .hero-caption h1 {
+          font-size: 40px;
+        }
+        .hero-caption p {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hotel-banner {
+          height: 200px;
+        }
+        .hero-caption h1 {
+          font-size: 26px;
+        }
+        .hero-caption p {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #f7f7f7">
+    <div class="page-wrapper">
+      <!-- NAVBAR -->
+      <nav class="navbar navbar-expand navbar-light bg-white border bottom">
+        <div class="container-fluid align-items-center d-flex">
+          <a href="homepage.html" class="logo me-2">
+            <img src="bookLET logo cropped.png" alt="bookLET" class="logo" />
+          </a>
+
+          <ul class="navbar-nav ms-3">
+            <li class="nav-item help me-2">
+              <a class="nav-link" href="help.html" style="color: #193764"
+                >Help</a
+              >
+            </li>
+            <li class="nav-item log-in me-2">
+              <a class="nav-link" style="color: white" href="welcome.html"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid px-0">
+        <div class="row g-0">
+          <!-- SIDEBAR -->
+          <nav
+            class="col-2 bg-white border-end py-4 sidebar-panel sidebar-width"
+          >
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="hotel.html">Hotels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="flights.html">Flights</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="cars.html">Cars</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="adventure.html">Adventures</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- MAIN CONTENT -->
+          <main class="col-10 mt-2 px-4 main-width">
+            <!-- Breadcrumb -->
+            <div class="container">
+              <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="homepage.html" class="text-decoration-none"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="hotel.html" class="text-decoration-none">Hotels</a>
+                  </li>
+                </ol>
+              </nav>
+            </div>
+
+            <!-- HERO BANNER -->
+            <div class="container banner-wrapper">
+              <img src="hotel-banner.jpg" class="img-fluid hotel-banner" />
+
+              <div class="hero-caption">
+                <h1 class="fw-bold text-white">Hotel Bookings</h1>
+                <p class="lead text-white">Rest at your desired hotel!</p>
+              </div>
+            </div>
+
+            <!-- BOOKING OPTIONS TITLE -->
+            <div class="container text-center mt-4">
+              <h3 class="booking-options"><b>Booking options</b></h3>
+            </div>
+
+            <!-- BOOKING SELECTION BOXES -->
+            <div
+              class="container d-flex justify-content-center gap-3 mt-3 flex-wrap"
+            >
+              <!-- Check-in -->
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-calendar-event me-3 fs-4"></i>
+                <div>
+                  <small class="text-secondary">Check In</small><br />
+                  <span class="fw-bold">Thu, Dec 11</span>
+                </div>
+              </div>
+
+              <!-- Check-out -->
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-calendar-check me-3 fs-4"></i>
+                <div>
+                  <small class="text-secondary">Check Out</small><br />
+                  <span class="fw-bold">Fri, Dec 12</span>
+                </div>
+              </div>
+
+              <!-- Guests -->
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-people-fill me-3 fs-4"></i>
+                <div>
+                  <small class="text-secondary">Rooms/Guests</small><br />
+                  <span class="fw-bold">1 Room, 2 Guests</span>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

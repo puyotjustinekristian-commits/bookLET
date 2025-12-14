@@ -243,11 +243,9 @@ footer {
   border-radius: 12px;
 }
 
-@media (max-width: 576px) {
-  #login-modal .myform {
-    max-width: 100%;
-    margin: 0.5rem;
-  }
+#login-modal .myform {
+  max-width: 100%;
+  margin: 0.5rem;
 }
 
 #login-modal .form-control {
@@ -326,11 +324,9 @@ footer {
   border-radius: 12px;
 }
 
-@media (max-width: 576px) {
-  #signin-modal .myform {
-    max-width: 100%;
-    margin: 0.5rem;
-  }
+#signin-modal .myform {
+  max-width: 100%;
+  margin: 0.5rem;
 }
 
 #signin-modal .form-control {
@@ -378,3 +374,44 @@ footer {
 }
 
 /*Manila html Design*/
+.manila-card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: scale(1.05);
+  transform-origin: top left;
+}
+
+.manila-image {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 992px) {
+  .manila-image {
+    height: 250px;
+  }
+}
+
+.breadcrumb {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #193764;
+  margin-top: 10px;
+}
+
+.breadcrumb-item a {
+  color: #193764;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #0d2a5c;
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #555;
+}
