@@ -148,7 +148,7 @@
           <ul class="navbar-nav ms-3">
             <li class="nav-item help me-2">
               <a class="nav-link" href="help.html" style="color: #193764"
-                >Help</a
+                >Currency($)</a
               >
             </li>
             <li class="nav-item log-in me-2">
@@ -174,7 +174,7 @@
                 <a class="nav-link active" href="flights.html">Flights</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="cars.html">Cars</a>
+                <a class="nav-link active" href="cafes.html">Cafes</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="adventure.html">Adventures</a>
@@ -238,53 +238,6 @@
                 </div>
               </div>
 
-              <!-- Rooms / Guests -->
-              <div
-                class="booking-box d-flex align-items-center"
-                data-bs-toggle="modal"
-                data-bs-target="#roomsGuestsModal"
-              >
-                <i class="bi bi-people-fill me-3 fs-4"></i>
-                <div>
-                  <label class="text-secondary">Rooms / Guests</label><br />
-                  <span id="roomGuestText">1 Room, 2 Guests</span>
-                </div>
-              </div>
-
-              <!-- Hidden values -->
-              <input type="hidden" id="roomsHidden" value="1" />
-              <input type="hidden" id="adultsHidden" value="2" />
-              <input type="hidden" id="childrenHidden" value="0" />
-
-              <div class="modal fade" id="roomsGuestsModal">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content p-4 rounded-4">
-                    <div class="mb-3">
-                      <label>Rooms</label>
-                      <input type="number" id="rooms" value="1" min="1" />
-                    </div>
-
-                    <div class="mb-3">
-                      <label>Adults</label>
-                      <input type="number" id="adults" value="2" min="1" />
-                    </div>
-
-                    <div class="mb-3">
-                      <label>Children</label>
-                      <input type="number" id="children" value="0" min="0" />
-                    </div>
-
-                    <button
-                      class="btn btn-success w-100"
-                      onclick="updateRoomGuest()"
-                      data-bs-dismiss="modal"
-                    >
-                      Update
-                    </button>
-                  </div>
-                </div>
-              </div>
-
               <!-- City Dropdown -->
               <div class="booking-box d-flex align-items-center">
                 <i class="bi bi-building-fill me-3 fs-4"></i>
@@ -330,6 +283,25 @@
                 </div>
               </div>
 
+              <!-- Budget Selector -->
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-cash-stack me-3 fs-4"></i>
+                <div class="w-100">
+                  <label class="text-secondary">Hotel Type</label><br />
+                  <select
+                    id="budget"
+                    class="form-select border-0 fw-bold"
+                    style="color: #193764"
+                  >
+                    <option value="">Any</option>
+                    <option value="$">Budget ($)</option>
+                    <option value="$$">Mid-range ($$)</option>
+                    <option value="$$$">Luxury ($$$)</option>
+                    <option value="$$$$">Premium ($$$$)</option>
+                  </select>
+                </div>
+              </div>
+
               <!-- Search Button -->
               <div class="w-100 text-center mt-3">
                 <button
@@ -348,153 +320,11 @@
       </div>
     </div>
 
-    <script>
-      function updateRoomGuest() {
-        const rooms = document.getElementById("rooms").value;
-        const adults = document.getElementById("adults").value;
-        const children = document.getElementById("children").value;
-
-        const guests = parseInt(adults) + parseInt(children);
-
-        document.getElementById("roomGuestText").innerText =
-          rooms + " Room, " + guests + " Guests";
-
-        document.getElementById("roomsHidden").value = rooms;
-        document.getElementById("adultsHidden").value = adults;
-        document.getElementById("childrenHidden").value = children;
-      }
-
-      function selectCity(city) {
-        document.getElementById("cityDropdownBtn").innerText = city;
-        document.getElementById("cityHidden").value = city;
-      }
-
-      function searchHotels() {
-        const checkin = document.getElementById("checkin").value;
-        const checkout = document.getElementById("checkout").value;
-        const city = document.getElementById("cityHidden").value;
-
-        if (!checkin || !checkout || !city) {
-          alert("Please complete all fields.");
-          return;
-        }
-
-        document.getElementById("hotelResults").innerHTML =
-          "<div class='alert alert-info'>Searching hotels in <b>" +
-          city +
-          "</b></div>";
-      }
-    </script>
-
-    <script>
-      async function searchHotels() {
-        const checkin = document.getElementById("checkin").value;
-        const checkout = document.getElementById("checkout").value;
-        const city = document.getElementById("cityHidden").value;
-
-        if (!checkin || !checkout || !city) {
-          alert("Please complete all fields.");
-          return;
-        }
-
-        document.getElementById("hotelResults").innerHTML =
-          "<p>Loading hotels...</p>";
-
-        try {
-          /* ===============================
-         1️⃣ GET DESTINATION ID
-      =============================== */
-          const destResponse = await fetch(
-            "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination?query=" +
-              city,
-            {
-              method: "GET",
-              headers: {
-                "x-rapidapi-key":
-                  "c75088e098msh7e4d5f33e362c85p1654c9jsnda43866fb283",
-                "x-rapidapi-host": "booking-com15.p.rapidapi.com",
-              },
-            }
-          );
-
-          const destData = await destResponse.json();
-          const destId = destData.data[0].dest_id;
-
-          /* ===============================
-         2️⃣ SEARCH HOTELS
-      =============================== */
-          const hotelResponse = await fetch(
-            "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchHotels?" +
-              new URLSearchParams({
-                dest_id: destId,
-                search_type: "CITY",
-                arrival_date: checkin,
-                departure_date: checkout,
-                adults: 2,
-                room_qty: 1,
-                page_number: 1,
-                units: "metric",
-                currency: "PHP",
-              }),
-            {
-              method: "GET",
-              headers: {
-                "x-rapidapi-key":
-                  "c75088e098msh7e4d5f33e362c85p1654c9jsnda43866fb283",
-                "x-rapidapi-host": "booking-com15.p.rapidapi.com",
-              },
-            }
-          );
-
-          const hotelData = await hotelResponse.json();
-          displayHotels(hotelData.data.hotels.slice(0, 10));
-        } catch (error) {
-          console.error(error);
-          document.getElementById("hotelResults").innerHTML =
-            "<p>Error loading hotels.</p>";
-        }
-      }
-
-      function displayHotels(hotels) {
-        let output = '<div class="row g-4">';
-
-        hotels.forEach((hotel) => {
-          const name = hotel.property.name;
-          const rating = hotel.property.reviewScore || "N/A";
-          const price =
-            hotel.property.priceBreakdown?.grossPrice?.value || "N/A";
-          const image = hotel.property.photoUrls?.[0] || "";
-
-          output += `
-        <div class="card h-100 shadow-sm">
-          <div class="card h-100 shadow-sm">
-            <img src="${image}" class="card-img-top" style="height:200px;object-fit:cover;">
-            <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text">
-                ⭐ Rating: ${rating}<br>
-                💰 Price:  ${price} USD
-              </p>
-            </div>
-          </div>
-        </div>
-      `;
-        });
-
-        output += "</div>";
-        document.getElementById("hotelResults").innerHTML = output;
-      }
-    </script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- HOTEL DETAILS MODAL -->
-    <div class="modal fade" id="hotelDetailModal" tabindex="-1">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content rounded-4">
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="hotelModalTitle"></h5>
+            <h5 class="modal-title">Hotel Booking</h5>
             <button
               type="button"
               class="btn-close"
@@ -503,29 +333,325 @@
           </div>
 
           <div class="modal-body">
-            <img
-              id="hotelModalImage"
-              class="img-fluid rounded mb-3"
-              style="width: 100%; height: 250px; object-fit: cover"
-            />
+            <form id="bookingForm">
+              <div class="mb-3">
+                <label class="form-label">Hotel</label>
+                <input
+                  type="text"
+                  id="modalHotelName"
+                  class="form-control"
+                  readonly
+                />
+              </div>
 
-            <p id="hotelModalRating"></p>
-            <p id="hotelModalPrice"></p>
-            <p id="hotelModalReviews"></p>
+              <div class="row">
+                <div class="col">
+                  <label class="form-label">Rooms</label>
+                  <input
+                    type="number"
+                    id="rooms"
+                    class="form-control"
+                    min="1"
+                    value="1"
+                    onchange="calculateTotalPrice()"
+                  />
+                </div>
+
+                <div class="col">
+                  <label class="form-label">Adults</label>
+                  <input
+                    type="number"
+                    id="adults"
+                    class="form-control"
+                    min="1"
+                    value="1"
+                  />
+                </div>
+
+                <div class="col">
+                  <label class="form-label">Children</label>
+                  <input
+                    type="number"
+                    id="children"
+                    class="form-control"
+                    min="0"
+                    value="0"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <label class="form-label">Total Price</label>
+                <input
+                  type="text"
+                  id="totalPrice"
+                  class="form-control"
+                  readonly
+                />
+                <small class="text-muted">Automatically calculated</small>
+              </div>
+            </form>
           </div>
 
           <div class="modal-footer">
-            <a
-              id="hotelModalBook"
-              href="#"
-              target="_blank"
-              class="btn btn-success rounded-pill px-4"
-            >
-              Book Now
-            </a>
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button class="btn btn-success" onclick="confirmBooking()">
+              Confirm Booking
+            </button>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+      function selectCity(city) {
+        document.getElementById("cityDropdownBtn").innerText = city;
+        document.getElementById("cityHidden").value = city;
+      }
+
+      function getBasePrice(level) {
+        switch (level) {
+          case "$":
+            return 2000;
+          case "$$":
+            return 4500;
+          case "$$$":
+            return 9000;
+          case "$$$$":
+            return 18000;
+          default:
+            return 0;
+        }
+      }
+
+      function getBasePriceText(level) {
+        const price = getBasePrice(level);
+        return price
+          ? `₱${price.toLocaleString()} / room / night`
+          : "Price unavailable";
+      }
+
+      async function searchHotels() {
+        const city = document.getElementById("cityHidden").value;
+        const checkin = document.getElementById("checkin").value;
+        const checkout = document.getElementById("checkout").value;
+        const budget = document.getElementById("budget")?.value || "";
+
+        if (!city || !checkin || !checkout) {
+          alert("Please complete all fields.");
+          return;
+        }
+
+        const resultBox = document.getElementById("hotelResults");
+        resultBox.innerHTML = `<div class="alert alert-info">
+      Searching hotels in <b>${city}</b>...
+    </div>`;
+
+        try {
+          const res = await fetch(
+            `hotelsearch.php?city=${city}&budget=${budget}`
+          );
+          const hotels = await res.json();
+
+          if (!hotels.length) {
+            resultBox.innerHTML = "<p>No hotels found.</p>";
+            return;
+          }
+
+          let output = `<div class="row">`;
+
+          hotels.forEach((hotel) => {
+            output += `
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+
+              <img src="${hotel.image || "hotel-placeholder.jpg"}"
+                   class="card-img-top"
+                   style="height:180px; object-fit:cover;">
+
+              <div class="card-body">
+                <h5 class="card-title">${hotel.name}</h5>
+
+                <p class="card-text">
+                  📍 ${hotel.address}<br>
+                  <b>Price starts:</b>
+                  ${getBasePriceText(hotel.price_level)}
+                </p>
+
+                <button class="btn btn-outline-primary btn-sm"
+                  onclick="viewHotelDetails('${hotel.location_id}')">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+          });
+
+          output += `</div>`;
+          resultBox.innerHTML = output;
+        } catch (err) {
+          console.error(err);
+          resultBox.innerHTML = "<p>Error loading hotels.</p>";
+        }
+      }
+    </script>
+
+    <script>
+      async function viewHotelDetails(id) {
+        try {
+          const res = await fetch(`hoteldetails.php?id=${id}`);
+          const data = await res.json();
+
+          let imagesHTML = "";
+          if (data.images && data.images.length) {
+            imagesHTML = `
+          <img src="${data.images[0]}"
+               class="img-fluid rounded mb-3"
+               style="max-height:320px; object-fit:cover;">
+        `;
+          }
+
+          let reviewsHTML = data.reviews
+            .slice(0, 3)
+            .map(
+              (r) => `
+        <div class="border rounded p-2 mb-2">
+          <strong>${r.title || "No title"}</strong><br>
+          ⭐ ${r.rating} / 5
+          <p>${r.text}</p>
+        </div>
+      `
+            )
+            .join("");
+
+          if (!reviewsHTML) reviewsHTML = "<p>No reviews available.</p>";
+
+          document.getElementById("hotelResults").innerHTML = `
+        <div class="card p-4 shadow-sm">
+
+          ${imagesHTML}
+
+          <h3>${data.name}</h3>
+
+          <p class="text-success fw-bold">
+            💰 Base price: ${getBasePriceText(data.price_level)}
+          </p>
+
+          <p>⭐ <strong>Rating:</strong> ${data.rating}</p>
+          <p>📍 <strong>Address:</strong> ${data.address}</p>
+          <p>${data.description}</p>
+
+          <h5 class="mt-3">Reviews</h5>
+          ${reviewsHTML}
+
+          <div class="mt-3 d-flex gap-2">
+            <button class="btn btn-success"
+              onclick="openBookingModal(
+                '${data.name}',
+                '${data.price_level}',
+                '${document.getElementById("checkin").value}',
+                '${document.getElementById("checkout").value}'
+              )">
+              Book Now
+            </button>
+
+            <button class="btn btn-secondary"
+              onclick="searchHotels()">
+              Back to results
+            </button>
+          </div>
+
+        </div>
+      `;
+        } catch (err) {
+          console.error(err);
+          alert("Failed to load hotel details.");
+        }
+      }
+    </script>
+
+    <script>
+      let currentPriceLevel = "$";
+      let checkInDate = "";
+      let checkOutDate = "";
+
+      function openBookingModal(name, priceLevel, checkIn, checkOut) {
+        document.getElementById("modalHotelName").value = name;
+
+        currentPriceLevel = priceLevel;
+        checkInDate = checkIn;
+        checkOutDate = checkOut;
+
+        calculateTotalPrice();
+
+        const modal = new bootstrap.Modal(
+          document.getElementById("bookingModal")
+        );
+        modal.show();
+      }
+
+      function confirmBooking() {
+        const rooms = document.getElementById("rooms").value;
+        const adults = document.getElementById("adults").value;
+        const children = document.getElementById("children").value;
+        const hotel = document.getElementById("modalHotelName").value;
+        const price = document.getElementById("totalPrice").value;
+
+        alert(
+          `Booking Confirmed!\n\n` +
+            `Hotel: ${hotel}\n` +
+            `Rooms: ${rooms}\n` +
+            `Adults: ${adults}\n` +
+            `Children: ${children}\n` +
+            `Total Price: ${price}`
+        );
+
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("bookingModal")
+        );
+        modal.hide();
+      }
+    </script>
+
+    <script>
+      function getPricePerNight(level) {
+        switch (level) {
+          case "$":
+            return 2000;
+          case "$$":
+            return 4500;
+          case "$$$":
+            return 9000;
+          case "$$$$":
+            return 18000;
+          default:
+            return 0;
+        }
+      }
+
+      function calculateNights(checkIn, checkOut) {
+        const inDate = new Date(checkIn);
+        const outDate = new Date(checkOut);
+        const diff = outDate - inDate;
+        return Math.max(diff / (1000 * 60 * 60 * 24), 1);
+      }
+
+      function calculateTotalPrice() {
+        const rooms = parseInt(document.getElementById("rooms").value) || 1;
+        const nights = calculateNights(checkInDate, checkOutDate);
+        const pricePerNight = getBasePrice(currentPriceLevel);
+
+        const total = rooms * nights * pricePerNight;
+
+        document.getElementById(
+          "totalPrice"
+        ).value = `₱${total.toLocaleString()}`;
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

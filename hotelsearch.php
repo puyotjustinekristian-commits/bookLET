@@ -1,64 +1,101 @@
 <?php
-header("Content-Type: application/json");
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-$apiKey = "c75088e098msh7e4d5f33e362c85p1654c9jsnda43866fb283";
-$apiHost = "booking-com15.p.rapidapi.com";
+header("Content-Type: application/json; charset=UTF-8");
 
-$city = $_GET['city'] ?? '';
-$checkin = $_GET['checkin'] ?? '';
-$checkout = $_GET['checkout'] ?? '';
+$apiKey = "922E638EDB404FB19963861AAA63226B";
 
-if ($city === '' || $checkin === '' || $checkout === '') {
-    echo json_encode(["error" => "Missing parameters"]);
+$city   = $_GET["city"] ?? "";
+$budget = $_GET["budget"] ?? ""; // $, $$, $$$, $$$$
+
+if (trim($city) === "") {
+    echo json_encode([]);
     exit;
 }
 
-/* 1️⃣ Destination */
-$destUrl = "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchDestination?query=" . urlencode($city);
+$searchQuery = urlencode($city . " Philippines");
 
-$ch = curl_init($destUrl);
+$searchUrl = "https://api.content.tripadvisor.com/api/v1/location/search"
+           . "?searchQuery=$searchQuery"
+           . "&category=hotels"
+           . "&language=en"
+           . "&key=$apiKey";
+
+$ch = curl_init();
 curl_setopt_array($ch, [
+    CURLOPT_URL => $searchUrl,
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER => [
-        "x-rapidapi-key: $apiKey",
-        "x-rapidapi-host: $apiHost"
-    ]
+    CURLOPT_HTTPHEADER => ["accept: application/json"],
+    CURLOPT_TIMEOUT => 15
 ]);
 
-$destResponse = curl_exec($ch);
+$response = curl_exec($ch);
 curl_close($ch);
 
-$destData = json_decode($destResponse, true);
+$data = json_decode($response, true);
+$results = $data["data"] ?? [];
 
-if (!isset($destData['data'][0]['dest_id'])) {
-    echo json_encode(["error" => "Destination not found"]);
-    exit;
+$hotels = [];
+
+foreach ($results as $item) {
+
+    if (!isset($item["location_id"])) continue;
+
+    $id = $item["location_id"];
+
+    $detailsUrl = "https://api.content.tripadvisor.com/api/v1/location/$id/details"
+                . "?language=en&key=$apiKey";
+
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL => $detailsUrl,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => ["accept: application/json"],
+        CURLOPT_TIMEOUT => 10
+    ]);
+    $detailsResponse = curl_exec($ch);
+    curl_close($ch);
+
+    if (!$detailsResponse) continue;
+
+    $details = json_decode($detailsResponse, true);
+
+    $priceLevel = $details["price_level"] ?? "";
+
+    if ($budget !== "" && $priceLevel !== $budget) continue;
+
+    $image = "";
+
+    $photoUrl = "https://api.content.tripadvisor.com/api/v1/location/$id/photos"
+              . "?language=en&key=$apiKey";
+
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL => $photoUrl,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => ["accept: application/json"],
+        CURLOPT_TIMEOUT => 10
+    ]);
+    $photoResponse = curl_exec($ch);
+    curl_close($ch);
+
+    $photoData = json_decode($photoResponse, true);
+
+    if (!empty($photoData["data"][0]["images"]["large"]["url"])) {
+        $image = $photoData["data"][0]["images"]["large"]["url"];
+    }
+
+    $hotels[] = [
+        "location_id" => $id,
+        "name" => $details["name"] ?? $item["name"],
+        "rating" => $details["rating"] ?? "N/A",
+        "address" => $details["address_obj"]["address_string"] ?? "Address unavailable",
+        "price_level" => $priceLevel,
+        "image" => $image
+    ];
+
+    if (count($hotels) >= 10) break;
 }
 
-$destId = $destData['data'][0]['dest_id'];
-
-/* 2️⃣ Hotels */
-$hotelUrl = "https://booking-com15.p.rapidapi.com/api/v1/hotels/searchHotels?" . http_build_query([
-    "dest_id" => $destId,
-    "search_type" => "CITY",
-    "arrival_date" => $checkin,
-    "departure_date" => $checkout,
-    "adults" => 2,
-    "room_qty" => 1,
-    "page_number" => 1,
-    "currency" => "PHP"
-]);
-
-$ch = curl_init($hotelUrl);
-curl_setopt_array($ch, [
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER => [
-        "x-rapidapi-key: $apiKey",
-        "x-rapidapi-host: $apiHost"
-    ]
-]);
-
-$hotelResponse = curl_exec($ch);
-curl_close($ch);
-
-echo $hotelResponse;
+echo json_encode($hotels);
