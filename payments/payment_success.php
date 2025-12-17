@@ -80,7 +80,7 @@ if ($stmt === false) {
           <p class="lead text-muted">Your flight has been successfully booked.</p>
           <p>Reference: <strong><?= htmlspecialchars($reference) ?></strong></p>
           <hr>
-          <a href="homepage/homepage.html" class="btn btn-primary btn-lg mt-3" style="background-color: #193764;">Return to Home</a>
+          <a href="../homepage/homepage.html" class="btn btn-primary btn-lg mt-3" style="background-color: #193764;">Return to Home</a>
         </div>
       </div>
     </div>

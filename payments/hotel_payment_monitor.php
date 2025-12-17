@@ -37,6 +37,6 @@ $checkoutUrl = $_GET['checkout_url'] ?? '';
     <h3 class="fw-bold" style="color: #193764;">Completing your payment...</h3>
     <p class="text-muted">A new tab has opened for you to pay securely via PayMongo.</p>
     <p class="small text-muted">Once paid, this page will automatically update.</p>
-    <a href="<?= $checkoutUrl ?>" target="_blank" class="btn btn-outline-primary btn-sm mt-3">Re-open Payment Page</a>
+    <a href="<?= $checkoutUrl ?>" target="_blank" class="btn btn-outline-primary btn-sm mt-3">Click here to pay</a>
 </body>
 </html>
