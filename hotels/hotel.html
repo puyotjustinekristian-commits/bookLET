@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hotels</title>
+
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .banner-wrapper {
+        position: relative;
+      }
+
+      .hero-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 10;
+      }
+
+      .hotel-banner {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 30px;
+        filter: brightness(50%);
+      }
+
+      .hero-caption h1 {
+        font-size: 60px;
+        font-weight: bold;
+      }
+
+      .hero-caption p {
+        font-size: 28px;
+      }
+
+      .booking-options {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        font-size: 30px;
+        color: #193764;
+        text-align: center;
+      }
+
+      .booking-box {
+        border: 2px solid #193764;
+        border-radius: 40px;
+        background-color: #fff;
+        width: 260px;
+        height: 90px;
+        padding: 15px 25px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .booking-box:hover {
+        background-color: #f4f7f3;
+      }
+
+      .booking-box i {
+        font-size: 1.4rem;
+        color: #193764;
+        flex-shrink: 0;
+      }
+
+      .booking-box label {
+        font-size: 13px;
+        color: #6c757d;
+        margin-bottom: 2px;
+      }
+
+      .booking-box span,
+      .booking-box input {
+        font-size: 15px;
+        font-weight: bold;
+        color: #193764;
+      }
+
+      .booking-box input {
+        border: none;
+        background: transparent;
+        padding: 0;
+        height: 24px;
+        line-height: 24px;
+        outline: none;
+      }
+
+      @media (max-width: 992px) {
+        .hotel-banner {
+          height: 260px;
+        }
+        .hero-caption h1 {
+          font-size: 40px;
+        }
+        .hero-caption p {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hotel-banner {
+          height: 200px;
+        }
+        .hero-caption h1 {
+          font-size: 26px;
+        }
+        .hero-caption p {
+          font-size: 14px;
+        }
+      }
+
+      .btn-success,
+      .btn-success:hover {
+        background-color: #193764;
+        border-color: #193764;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #f7f7f7">
+    <div class="page-wrapper">
+
+      <nav class="navbar navbar-expand navbar-light bg-white border bottom">
+        <div class="container-fluid align-items-center d-flex">
+          <a href="../homepage/homepage.html" class="logo me-2">
+            <img src="../images/bookLET logo cropped.png" alt="bookLET" class="logo" />
+          </a>
+
+          <ul class="navbar-nav ms-3">
+            <li class="nav-item help me-2">
+              <a class="nav-link" href="../bookings/mybookings.php" style="color: #193764"
+                >My Bookings</a
+              >
+            </li>
+            <li class="nav-item log-in me-2">
+              <a class="nav-link" style="color: white" href="../welcome/welcome.php"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid px-0">
+        <div class="row g-0">
+          <nav
+            class="col-2 bg-white border-end py-4 sidebar-panel sidebar-width"
+          >
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="hotel.html">Hotels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../flights/flights.html">Flights</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../cafes/cafes.html">Cafes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../adventures/adventures.html">Adventures</a>
+              </li>
+            </ul>
+          </nav>
+
+
+          <main class="col-10 mt-2 px-4 main-width">
+
+            <div class="container">
+              <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="../homepage/homepage.html" class="text-decoration-none"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="hotel.html" class="text-decoration-none">Hotels</a>
+                  </li>
+                </ol>
+              </nav>
+            </div>
+
+            <div class="container banner-wrapper">
+              <img src="../images/hotel-banner.jpg" class="img-fluid hotel-banner" />
+
+              <div class="hero-caption">
+                <h1 class="fw-bold text-white">Hotel Bookings</h1>
+                <p class="lead text-white">Rest at your desired hotel!</p>
+              </div>
+            </div>
+
+            <div class="container mt-4 text-center">
+              <h3 class="booking-options"><b>Booking options</b></h3>
+            </div>
+
+            <form
+              id="hotelForm"
+              class="container d-flex justify-content-center gap-3 mt-3 flex-wrap"
+              onsubmit="return false;"
+            >
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-calendar-event me-3 fs-4"></i>
+                <div>
+                  <label class="text-secondary">Check In</label><br />
+                  <input type="date" id="checkin" required />
+                </div>
+              </div>
+
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-calendar-check me-3 fs-4"></i>
+                <div>
+                  <label class="text-secondary">Check Out</label><br />
+                  <input type="date" id="checkout" required />
+                </div>
+              </div>
+
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-building-fill me-3 fs-4"></i>
+                <div class="w-100 dropdown">
+                  <label class="text-secondary">City / Province</label><br />
+                  <button
+                    class="btn btn-link p-0 fw-bold text-start w-100 text-decoration-none"
+                    data-bs-toggle="dropdown"
+                    id="cityDropdownBtn"
+                    style="color: #193764"
+                  >
+                    Select city
+                  </button>
+
+                  <ul class="dropdown-menu w-100">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Albay')"
+                        >Albay</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Baguio')"
+                        >Baguio</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Manila')"
+                        >Manila</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Bacolod')"
+                        >Bacolod</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Cebu')"
+                        >Cebu</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Iloilo')"
+                        >Iloilo</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Dumaguete')"
+                        >Dumaguete</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Davao')"
+                        >Davao</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('General Santos')"
+                        >General Santos</a
+                      >
+                    </li>
+                  </ul>
+
+                  <input type="hidden" id="cityHidden" />
+                </div>
+              </div>
+
+              <div class="booking-box d-flex align-items-center">
+                <i class="bi bi-cash-stack me-3 fs-4"></i>
+                <div class="w-100">
+                  <label class="text-secondary">Hotel Type</label><br />
+                  <select
+                    id="budget"
+                    class="form-select border-0 fw-bold"
+                    style="color: #193764"
+                  >
+                    <option value="">Any</option>
+                    <option value="$">Budget ($)</option>
+                    <option value="$$">Mid-range ($$)</option>
+                    <option value="$$$">Luxury ($$$)</option>
+                    <option value="$$$$">Premium ($$$$)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="w-100 text-center mt-3">
+                <button
+                  class="btn btn-success rounded-pill px-5"
+                  onclick="searchHotels()"
+                >
+                  Search Hotels
+                </button>
+              </div>
+            </form>
+            <br />
+            <div class="container mt-5" id="hotelResults"></div>
+            <footer>
+              <div class="copyright-footer">
+                <p>
+                  Copyright © 2025 bookLET. Ltd. All rights reserved <br />
+                  Site Operator: bookLET.com. Ltd.
+                </p>
+              </div>
+            </footer>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Hotel Booking</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form id="bookingForm">
+              <div class="mb-3">
+                <label class="form-label">Hotel</label>
+                <input
+                  type="text"
+                  id="modalHotelName"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <label class="form-label">Rooms</label>
+                  <input
+                    type="number"
+                    id="rooms"
+                    class="form-control"
+                    min="1"
+                    value="1"
+                    onchange="calculateTotalPrice()"
+                  />
+                </div>
+
+                <div class="col">
+                  <label class="form-label">Adults</label>
+                  <input
+                    type="number"
+                    id="adults"
+                    class="form-control"
+                    min="1"
+                    value="1"
+                  />
+                </div>
+
+                <div class="col">
+                  <label class="form-label">Children</label>
+                  <input
+                    type="number"
+                    id="children"
+                    class="form-control"
+                    min="0"
+                    value="0"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <label class="form-label">Total Price</label>
+                <input
+                  type="text"
+                  id="totalPrice"
+                  class="form-control"
+                  readonly
+                />
+                <small class="text-muted">Automatically calculated</small>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button class="btn btn-success" onclick="confirmBooking()">
+              Confirm Booking
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function selectCity(city) {
+        document.getElementById("cityDropdownBtn").innerText = city;
+        document.getElementById("cityHidden").value = city;
+      }
+
+      function getBasePrice(level) {
+        switch (level) {
+          case "$":
+            return 2000;
+          case "$$":
+            return 4500;
+          case "$$$":
+            return 9000;
+          case "$$$$":
+            return 18000;
+          default:
+            return 0;
+        }
+      }
+
+      function getBasePriceText(level) {
+        const price = getBasePrice(level);
+        return price
+          ? `₱${price.toLocaleString()} / room / night`
+          : "Price unavailable";
+      }
+
+      async function searchHotels() {
+        const city = document.getElementById("cityHidden").value;
+        const checkin = document.getElementById("checkin").value;
+        const checkout = document.getElementById("checkout").value;
+        const budget = document.getElementById("budget")?.value || "";
+
+        if (!city || !checkin || !checkout) {
+          alert("Please complete all fields.");
+          return;
+        }
+
+        const resultBox = document.getElementById("hotelResults");
+        resultBox.innerHTML = `<div class="alert alert-info">
+      Searching hotels in <b>${city}</b>...
+    </div>`;
+
+        try {
+          const res = await fetch(
+            `hotelsearch.php?city=${city}&budget=${budget}`
+          );
+          const hotels = await res.json();
+
+          if (!hotels.length) {
+            resultBox.innerHTML = "<p>No hotels found.</p>";
+            return;
+          }
+
+          let output = `<div class="row">`;
+
+          hotels.forEach((hotel) => {
+            output += `
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+
+              <img src="${hotel.image || "../images/hotel-placeholder.jpg"}"
+                   class="card-img-top"
+                   style="height:180px; object-fit:cover;">
+
+              <div class="card-body">
+                <h5 class="card-title">${hotel.name}</h5>
+
+                <p class="card-text">
+                  📍 ${hotel.address}<br>
+                  <b>Price starts:</b>
+                  ${getBasePriceText(hotel.price_level)}
+                </p>
+
+                <button class="btn btn-outline-primary btn-sm"
+                  onclick="viewHotelDetails('${hotel.location_id}')">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+          });
+
+          output += `</div>`;
+          resultBox.innerHTML = output;
+        } catch (err) {
+          console.error(err);
+          resultBox.innerHTML = "<p>Error loading hotels.</p>";
+        }
+      }
+    </script>
+
+    <script>
+      async function viewHotelDetails(id) {
+        try {
+          const res = await fetch(`hoteldetails.php?id=${id}`);
+          const data = await res.json();
+
+          let imagesHTML = "";
+          if (data.images && data.images.length) {
+            imagesHTML = `
+          <img src="${data.images[0]}"
+               class="img-fluid rounded mb-3"
+               style="max-height:320px; object-fit:cover;">
+        `;
+          }
+
+          let reviewsHTML = data.reviews
+            .slice(0, 3)
+            .map(
+              (r) => `
+        <div class="border rounded p-2 mb-2">
+          <strong>${r.title || "No title"}</strong><br>
+          ⭐ ${r.rating} / 5
+          <p>${r.text}</p>
+        </div>
+      `
+            )
+            .join("");
+
+          if (!reviewsHTML) reviewsHTML = "<p>No reviews available.</p>";
+
+          document.getElementById("hotelResults").innerHTML = `
+        <div class="card p-4 shadow-sm">
+
+          ${imagesHTML}
+
+          <h3>${data.name}</h3>
+
+          <p class="text-success fw-bold">
+            💰 Base price: ${getBasePriceText(data.price_level)}
+          </p>
+
+          <p>⭐ <strong>Rating:</strong> ${data.rating}</p>
+          <p>📍 <strong>Address:</strong> ${data.address}</p>
+          <p>${data.description}</p>
+
+          <h5 class="mt-3">Reviews</h5>
+          ${reviewsHTML}
+
+          <div class="mt-3 d-flex gap-2">
+            <button class="btn btn-success"
+              onclick="openBookingModal(
+                '${data.name}',
+                '${data.price_level}',
+                '${document.getElementById("checkin").value}',
+                '${document.getElementById("checkout").value}'
+              )">
+              Book Now
+            </button>
+
+            <button class="btn btn-secondary"
+              onclick="searchHotels()">
+              Back to results
+            </button>
+          </div>
+
+        </div>
+      `;
+        } catch (err) {
+          console.error(err);
+          alert("Failed to load hotel details.");
+        }
+      }
+    </script>
+
+    <script>
+      let currentPriceLevel = "$";
+      let checkInDate = "";
+      let checkOutDate = "";
+
+      function openBookingModal(name, priceLevel, checkIn, checkOut) {
+        document.getElementById("modalHotelName").value = name;
+
+        currentPriceLevel = priceLevel;
+        checkInDate = checkIn;
+        checkOutDate = checkOut;
+
+        calculateTotalPrice();
+
+        const modal = new bootstrap.Modal(
+          document.getElementById("bookingModal")
+        );
+        modal.show();
+      }
+
+      function confirmBooking() {
+        const rooms = document.getElementById("rooms").value;
+        const adults = document.getElementById("adults").value;
+        const children = document.getElementById("children").value;
+        const hotel = document.getElementById("modalHotelName").value;
+        // Clean price string to get number if needed, but for now we pass raw price logic
+        // But better to pass calculated price. 
+        // Note: The total price in input includes '₱' and commas.
+        const priceStr = document.getElementById("totalPrice").value;
+        const price = priceStr.replace(/[^0-9.]/g, ''); 
+        
+        const checkin = checkInDate;
+        const checkout = checkOutDate;
+
+        // Redirect to hotelpayment.php
+        const url = `../payments/hotelpayment.php?hotel_name=${encodeURIComponent(hotel)}&price=${price}&checkin=${checkin}&checkout=${checkout}&rooms=${rooms}&adults=${adults}&children=${children}`;
+        window.location.href = url;
+      }
+    </script>
+
+    <script>
+      function getPricePerNight(level) {
+        switch (level) {
+          case "$":
+            return 2000;
+          case "$$":
+            return 4500;
+          case "$$$":
+            return 9000;
+          case "$$$$":
+            return 18000;
+          default:
+            return 0;
+        }
+      }
+
+      function calculateNights(checkIn, checkOut) {
+        const inDate = new Date(checkIn);
+        const outDate = new Date(checkOut);
+        const diff = outDate - inDate;
+        return Math.max(diff / (1000 * 60 * 60 * 24), 1);
+      }
+
+      function calculateTotalPrice() {
+        const rooms = parseInt(document.getElementById("rooms").value) || 1;
+        const nights = calculateNights(checkInDate, checkOutDate);
+        const pricePerNight = getBasePrice(currentPriceLevel);
+
+        const total = rooms * nights * pricePerNight;
+
+        document.getElementById(
+          "totalPrice"
+        ).value = `₱${total.toLocaleString()}`;
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

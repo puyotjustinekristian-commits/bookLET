@@ -1,0 +1,514 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.page-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.logo .logo {
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.btn-find {
+  background-color: #193764;
+  border-color: #193764;
+  color: white;
+}
+.btn-find:hover {
+  background-color: #193764;
+  border-color: #193764;
+  color: white;
+}
+
+.help:hover,
+.sign-in:hover {
+  background-color: rgb(212, 212, 212);
+  border-color: rgb(212, 212, 212);
+  border-radius: 30%;
+}
+
+.log-in {
+  background-color: #193764;
+  border-color: #193764;
+  border-radius: 30%;
+}
+
+.sidebar-panel {
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding-top: 1.5rem;
+}
+
+.sidebar-width {
+  max-width: 12%;
+  flex: 0 0 12%;
+}
+
+.sidebar-panel a {
+  color: black;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 25px;
+}
+
+.sidebar-panel .nav {
+  gap: 0.5rem;
+}
+
+.sidebar-panel .nav-link {
+  padding: 0.5rem 1.25rem;
+  color: #193764;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+}
+
+.sidebar-panel .nav-link:hover {
+  background-color: #f0f4ff;
+}
+
+.sidebar-panel .nav-link.active {
+  color: #193764;
+  font-weight: 600;
+}
+
+.homepage-carousel {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.homepage-carousel .carousel-item img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 20px;
+}
+
+.hero-caption {
+  position: absolute;
+  inset: 0;
+  left: 10%;
+  right: auto;
+  text-align: left;
+  pointer-events: none;
+  margin: 0 0 20px;
+}
+
+.hero-caption h1 {
+  font-size: 70px;
+  font-family: "Montserrat", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  text-shadow: 0 12px 12px rgba(0, 0, 0, 0.6);
+}
+
+.hero-caption p {
+  font-size: 40px;
+  font-family: "Montserrat", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
+  text-shadow: 0 12px 12px rgba(0, 0, 0, 0.6);
+}
+
+.homepage-carousel .carousel-control-prev,
+.homepage-carousel .carousel-control-next {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.homepage-carousel .carousel-control-prev-icon,
+.homepage-carousel .carousel-control-next-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.top-city,
+.city-provinces {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding-left: 51px;
+}
+
+.top-city .row > .col,
+.city-provinces .row > .col {
+  display: flex;
+}
+
+.top-city .card,
+.city-provinces .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 334px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-city img.card-img-top,
+.city-provinces img.card-img-top {
+  width: 100%;
+  height: 213px;
+  object-fit: cover;
+}
+
+.top-city .card-body,
+.city-provinces .card-body {
+  flex: 1;
+}
+
+.top-city .card:hover,
+.adventures .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.adventures .carousel-control-prev {
+  left: -60px; /* move left arrow outward */
+}
+
+.adventures .carousel-control-next {
+  right: -60px; /* move right arrow outward */
+}
+
+.adventures .carousel-control-prev,
+.adventures .carousel-control-next {
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  background-color: rgba(25, 55, 100, 0.85);
+  border-radius: 75%;
+}
+
+footer {
+  text-align: center;
+  padding: 12px 0;
+}
+
+
+#login-modal .modal-content {
+  background-color: transparent;
+  border: none;
+  width: 75%;
+  margin: 0 auto;
+}
+
+#login-modal .modal-body {
+  padding: 0;
+}
+
+#login-modal .btn-close {
+  position: absolute;
+  right: 0;
+  padding: 1em;
+}
+
+#login-modal h1 {
+  font-size: 2.3em;
+  font-weight: bold;
+}
+
+#login-modal .myform {
+  padding: 2em;
+  max-width: 100%;
+  color: #fff;
+  box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+  background-color: #193764;
+  border-radius: 12px;
+}
+
+#login-modal .myform {
+  max-width: 100%;
+  margin: 0.5rem;
+}
+
+#login-modal .form-control {
+  background-color: inherit;
+  color: #fff;
+  padding-left: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+}
+
+#login-modal .form-control:focus {
+  background-color: inherit;
+  color: #fff;
+  box-shadow: inset 0 -1px 0 #7e7e7e;
+}
+
+#login-modal .myform .btn {
+  width: 100%;
+  font-weight: 800;
+  background-color: #fff;
+  border-radius: 0;
+  padding: 0.5em 0;
+}
+
+#login-modal .myform .btn:hover {
+  background-color: inherit;
+  color: #fff;
+  border-color: #fff;
+}
+
+#login-modal p {
+  text-align: center;
+  padding-top: 2em;
+  color: grey;
+}
+
+#login-modal p a {
+  color: #e1e1e1;
+  text-decoration: none;
+}
+
+#login-modal p a:hover {
+  color: #fff;
+}
+
+
+#signin-modal .modal-content {
+  background-color: transparent;
+  border: none;
+  width: 75%;
+  margin: 0 auto;
+}
+
+#signin-modal .modal-body {
+  padding: 0;
+}
+
+#signin-modal .btn-close {
+  position: absolute;
+  right: 0;
+  padding: 1em;
+}
+
+#signin-modal h1 {
+  font-size: 2.3em;
+  font-weight: bold;
+}
+
+#signin-modal .myform {
+  padding: 2em;
+  max-width: 100%;
+  color: #fff;
+  box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+  background-color: #193764;
+  border-radius: 12px;
+}
+
+#signin-modal .myform {
+  max-width: 100%;
+  margin: 0.5rem;
+}
+
+#signin-modal .form-control {
+  background-color: inherit;
+  color: #fff;
+  padding-left: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+}
+
+#signin-modal .form-control:focus {
+  background-color: inherit;
+  color: #fff;
+  box-shadow: inset 0 -1px 0 #7e7e7e;
+}
+
+#signin-modal .myform .btn {
+  width: 100%;
+  font-weight: 800;
+  background-color: #fff;
+  border-radius: 0;
+  padding: 0.5em 0;
+}
+
+#signin-modal .myform .btn:hover {
+  background-color: inherit;
+  color: #fff;
+  border-color: #fff;
+}
+
+#signin-modal p {
+  text-align: center;
+  padding-top: 2em;
+  color: grey;
+}
+
+#signin-modal p a {
+  color: #e1e1e1;
+  text-decoration: none;
+}
+
+#signin-modal p a:hover {
+  color: #fff;
+}
+
+
+.manila-card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: scale(1.05);
+  transform-origin: top left;
+}
+
+.manila-image {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 992px) {
+  .manila-image {
+    height: 250px;
+  }
+}
+
+.breadcrumb {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #193764;
+  margin-top: 10px;
+}
+
+.breadcrumb-item a {
+  color: #193764;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #0d2a5c;
+  text-decoration: underline;
+}
+
+
+
+.booking-card {
+  background: white;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
+
+.booking-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.status-paid {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+
+@media (max-width: 991px) {
+
+  .sidebar-width {
+    max-width: 100%;
+    flex: 0 0 100%;
+    height: auto;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-panel {
+    min-height: auto;
+    padding-top: 1rem;
+  }
+
+
+  .sidebar-panel .nav {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .sidebar-panel .nav-link {
+    font-size: 16px;
+    padding: 0.5rem;
+  }
+
+
+  .homepage-carousel,
+  .homepage-carousel .carousel-item img {
+    height: 250px;
+  }
+
+  .hero-caption {
+    left: 5%;
+    bottom: 10px;
+    margin: 0;
+  }
+
+  .hero-caption h1 {
+    font-size: 32px;
+  }
+
+  .hero-caption p {
+    font-size: 18px;
+  }
+
+
+  .top-city,
+  .city-provinces {
+    padding-left: 0;
+    margin: 20px auto;
+  }
+  
+  .top-city .row, 
+  .city-provinces .row {
+    --bs-gutter-x: 1rem;
+  }
+  
+
+  .adventures .carousel-control-prev { left: -10px; }
+  .adventures .carousel-control-next { right: -10px; }
+
+
+  #login-modal .modal-content,
+  #signin-modal .modal-content {
+      width: 95%;
+  }
+
+
+  body {
+    font-size: 14px;
+  }
+}
